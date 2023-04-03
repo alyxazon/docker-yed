@@ -10,6 +10,7 @@ Install and run yEd in a Docker container.
   - [Build and Start](#build-and-start)
   - [Using yEd](#using-yed)
   - [Workspace](#workspace)
+  - [Bash Alias](#bash-alias)
 - [FAQ and Common Problems](#faq-and-common-problems)
   - [What is yEd?](#what-is-yed)
   - [Installation Loop](#installation-loop)
@@ -49,6 +50,14 @@ yed-run        # run yed
 
 - Inside the container: You can save your work in ```/home/yed/workspace```.
 - Outside the container: You can access your work in ```/${GIT-PATH}/docker-yed/workspace```.
+
+## Bash Alias
+
+Put this in your .bashrc (or elsewhere) to start the container and yEd:
+
+```bash
+alias yed='cd /${GIT-PATH}/docker-yed && make'
+```
 
 # FAQ and Common Problems
 
