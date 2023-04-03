@@ -35,7 +35,7 @@ Recommendation: Just leave the default values as they are:
 - Agreement: ```I accept the agreement``` (this is not default)
 - Destination directory: ```/home/yed/yEd```
 - Create symlinks: ```/usr/local/bin```
-- Create a desktopn icon: ```Yes``` (don't care)
+- Create a desktop icon: ```Yes``` (don't care)
 - Run yEd Graph Editor: ```Yes``` (don't care)
 
 You can now run yEd directly from the installer or just run ```yed-run``` inside the container shell.
