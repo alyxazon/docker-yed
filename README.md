@@ -56,7 +56,7 @@ yed-run        # run yed
 Put this in your .bashrc (or elsewhere) to start the container and yEd:
 
 ```bash
-alias yed='cd /${GIT-PATH}/docker-yed && make'
+alias yed='cd /${GIT-PATH}/docker-yed && make && cd --''
 ```
 
 # FAQ and Common Problems
