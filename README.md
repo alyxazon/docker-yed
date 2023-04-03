@@ -41,7 +41,7 @@ Recommendation: Just leave the default values as they are:
 
 You can now run yEd directly from the installer or just run ```yed-run``` inside the container shell.
 
-```
+```bash
 yed-install    # install yed
 yed-run        # run yed
 ```
@@ -85,7 +85,7 @@ Post ...: dial ...: connect: permission denied
 
 Solution (add your user to docker group):
 
-```
+```bash
 sudo groupadd docker
 sudo usermod -aG docker ${USER}
 su -s ${USER}
@@ -102,7 +102,7 @@ Is the docker daemon running?
 
 Solution (start docker service):
 
-```
+```bash
 sudo systemctl start docker
 sudo systemctl enable docker    # optional, docker will now start automatically
 ```
@@ -111,20 +111,20 @@ sudo systemctl enable docker    # optional, docker will now start automatically
 
 List docker-yed container(s):
 
-```
+```bash
 docker images | grep docker-yed    # list containers, we only care about docker-yed container(s)
 ```
 
 Remove container(s):
 
-```
+```bash
 docker image rm docker-yed    # by name
 docker image rm ${ID}         # by ID, alternative option
 ```
 
 Stop container(s):
 
-```
+```bash
 docker container stop ${ID}
 ```
 
