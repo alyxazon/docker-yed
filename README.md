@@ -2,9 +2,7 @@
 
 Install and run yEd in a Docker container.
 
-![Build](https://github.com/alexazon/docker-yed/actions/workflows/build.yml/badge.svg) ![License](https://img.shields.io/github/license/alexazon/docker-yed)
-
-https://img.shields.io/github/license/alexazon/docker-yed
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/alexazon/docker-yed/build.yml) ![GitHub](https://img.shields.io/github/license/alexazon/docker-yed)
 
 # Table of Contents
 
