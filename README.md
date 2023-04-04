@@ -2,7 +2,9 @@
 
 Install and run yEd in a Docker container.
 
-![Build](https://github.com/alexazon/docker-yed/actions/workflows/build.yml/badge.svg) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![Build](https://github.com/alexazon/docker-yed/actions/workflows/build.yml/badge.svg) ![License](https://img.shields.io/github/license/alexazon/docker-yed)
+
+https://img.shields.io/github/license/alexazon/docker-yed
 
 # Table of Contents
 
@@ -48,8 +50,8 @@ yed-run        # run yed
 
 ## Workspace
 
-- Inside the container: You can save your work in ```/home/yed/workspace```.
-- Outside the container: You can access your work in ```/${GIT-PATH}/docker-yed/workspace```.
+- Inside the container: You can save your work in ```/home/yed/workspace```
+- Outside the container: You can access your work in ```/${GIT-PATH}/docker-yed/workspace```
 
 ## Bash Alias
 
@@ -63,7 +65,7 @@ alias yed='cd /${GIT-PATH}/docker-yed && make && cd --'
 
 ## What is yEd?
 
-It is a cross-platform application (Linux, Windows, and Mac OS) that can be used to draw diagrams.
+It's a cross-platform application (Linux, Windows, and Mac OS) that can be used to draw diagrams.
 
 You can export diagrams as GIF, JPEG, PNG, EMF, BMP, PDF, EPS, and SVG.
 
