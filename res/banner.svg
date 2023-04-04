@@ -153,16 +153,16 @@
       <path d="M572.9968 272 L560.9968 267 L563.9968 272 L560.9968 277 Z" clip-path="url(#clipPath2)" stroke="none"/>
       <path fill="none" d="M613 252.0391 L613 192 L580.9609 192" clip-path="url(#clipPath2)"/>
       <path d="M572.9609 192 L584.9609 197 L581.9609 192 L584.9609 187 Z" clip-path="url(#clipPath2)" stroke="none"/>
-      <rect x="602.8408" y="206.0234" clip-path="url(#clipPath2)" fill="rgb(255,204,0)" width="20.3184" height="17.9688" stroke="none"/>
-      <rect stroke-linecap="square" x="602.8408" y="206.0234" clip-path="url(#clipPath2)" fill="none" width="20.3184" height="17.9688" stroke-miterlimit="1.6"/>
-      <text x="604.8408" xml:space="preserve" y="219.1621" clip-path="url(#clipPath2)" font-family="sans-serif" stroke="none">No</text>
+      <rect x="603.5264" y="206.0234" clip-path="url(#clipPath2)" fill="rgb(255,204,0)" width="18.9473" height="17.9688" stroke="none"/>
+      <rect stroke-linecap="square" x="603.5264" y="206.0234" clip-path="url(#clipPath2)" fill="none" width="18.9473" height="17.9688" stroke-miterlimit="1.6"/>
+      <text x="605.5264" xml:space="preserve" y="219.1621" clip-path="url(#clipPath2)" font-family="sans-serif" stroke="none">no</text>
       <path fill="none" d="M492.9609 192 L453 192 L453 243.9609" clip-path="url(#clipPath2)"/>
       <path d="M453 251.9609 L458 239.9609 L453 242.9609 L448 239.9609 Z" clip-path="url(#clipPath2)" stroke="none"/>
       <path fill="none" d="M652.9609 272 L724.9968 272" clip-path="url(#clipPath2)"/>
       <path d="M732.9968 272 L720.9968 267 L723.9968 272 L720.9968 277 Z" clip-path="url(#clipPath2)" stroke="none"/>
-      <rect x="680.5176" y="263.0156" clip-path="url(#clipPath2)" fill="rgb(255,204,0)" width="24.9648" height="17.9688" stroke="none"/>
-      <rect stroke-linecap="square" x="680.5176" y="263.0156" clip-path="url(#clipPath2)" fill="none" width="24.9648" height="17.9688" stroke-miterlimit="1.6"/>
-      <text x="682.5176" xml:space="preserve" y="276.1543" clip-path="url(#clipPath2)" font-family="sans-serif" stroke="none">Yes</text>
+      <rect x="680.6318" y="263.0156" clip-path="url(#clipPath2)" fill="rgb(255,204,0)" width="24.7363" height="17.9688" stroke="none"/>
+      <rect stroke-linecap="square" x="680.6318" y="263.0156" clip-path="url(#clipPath2)" fill="none" width="24.7363" height="17.9688" stroke-miterlimit="1.6"/>
+      <text x="682.6318" xml:space="preserve" y="276.1543" clip-path="url(#clipPath2)" font-family="sans-serif" stroke="none">yes</text>
       <path fill="none" d="M812.9609 272 L884.9968 272" clip-path="url(#clipPath2)"/>
       <path d="M892.9968 272 L880.9968 267 L883.9968 272 L880.9968 277 Z" clip-path="url(#clipPath2)" stroke="none"/>
       <path fill="none" d="M972.9609 272 L1064.9838 272" clip-path="url(#clipPath2)"/>
