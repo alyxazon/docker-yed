@@ -40,13 +40,13 @@ Press `CTRL+D` or use `exit` to shut down the container.
 Put this in your .bashrc (or elsewhere) to start the container and yEd:
 
 ```bash
-alias yed='cd /${GIT-PATH}/docker-yed && make && cd --'
+alias yed='make -C ${GIT-PATH}/docker-yed'
 ```
 
 ## Workspace
 
 - Inside the container: You can save your work in `/home/yed/workspace`
-- Outside the container: You can access your work in `/${GIT-PATH}/docker-yed/workspace`
+- Outside the container: You can access your work in `${GIT-PATH}/docker-yed/workspace`
 
 ## Installer Options
 
