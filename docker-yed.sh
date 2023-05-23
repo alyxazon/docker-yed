@@ -10,7 +10,6 @@ xauth nlist :0 | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
 
 # Workspace
 WS="workspace"
-WS_LOCATION="$(pwd)/$WS"
 WS_DOCKER="/home/yed/$WS"
 
 # Time settings
@@ -37,26 +36,54 @@ function run()
     -v $TIME_LOCATION:$TIME_DOCKER:ro \
     -v $XSOCK:$XSOCK \
     -v $XAUTH:$XAUTH \
-    -v $WS_LOCATION:/$WS_DOCKER \
+    -v $1:$WS_DOCKER \
     -e DISPLAY=unix$DISPLAY \
     -e XAUTHORITY=$XAUTH \
-    "$IMAGE_NAME" "$@"
+    "$IMAGE_NAME"
   rm $XAUTH
 }
 
+# Start script
+ARG_BUILD=0
+ARG_RUN=0
+ARG_WS="/dev/null"
+
 # Parse arguments
-while getopts "br" opt; do
+while getopts "brw:" opt; do
   case $opt in
     b)
-      echo "Building container ..."
-      build
+      ARG_BUILD=1
       ;;
     r)
-      echo "Running container ..."
-      run
+      ARG_RUN=1
+      ;;
+    w)
+      ARG_WS=$OPTARG
       ;;
     *)
       echo "Error: Invalid argument!"
       ;;
   esac
 done
+
+# Evaluate given arguments
+if [ $ARG_WS = "/dev/null" ]; then
+  echo "Error: Missing workspace!"
+  exit 1
+fi
+
+if [ $ARG_BUILD -ne 0 ]; then
+  echo "Building container ..."
+  build
+fi
+
+if [ $ARG_RUN -ne 0 ]; then
+  if [ -d $ARG_WS ]; then
+    echo "Running container (workspace = $ARG_WS) ..."
+    run $ARG_WS
+  else
+    echo "Error: Directory $ARG_WS not found!"
+    exit 1
+  fi
+fi
+exit 0

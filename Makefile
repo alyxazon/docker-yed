@@ -1,15 +1,23 @@
-CTL=docker-yed.sh
+# Optional arguments
+WORKSPACE ?= $(shell pwd)/workspace
 
+# Internal settings
+CTL := docker-yed.sh
+
+# Targets
 all: build run
 
 build:
-	./$(CTL) -b
+	@echo "Building container ..."
+	@./$(CTL) -b -w $(WORKSPACE)
 
 run:
-	./$(CTL) -r
+	@echo "Running container ..."
+	@./$(CTL) -r -w $(WORKSPACE)
 
 test:
 	@echo "Executing dry run ($(CTL)) ..."
-	bash -n $(CTL) -b
-	bash -n $(CTL) -r
-	./$(CTL) -b
+	bash -n $(CTL) -b -w $(WORKSPACE)
+	bash -n $(CTL) -r -w $(WORKSPACE)
+	@echo "Building container ..."
+	./$(CTL) -b -w $(WORKSPACE)

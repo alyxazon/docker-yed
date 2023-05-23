@@ -1,5 +1,5 @@
-# LTS Ubuntu
-FROM ubuntu:22.04
+# Ubuntu
+FROM ubuntu:latest
 
 # Download link and installer script
 ARG YED_DL=https://www.yworks.com/resources/yed/demo/
@@ -14,15 +14,17 @@ ARG BASHRC=/home/yed/.bashrc
 ARG YED_HOME=/home/yed
 
 # Update OS
-RUN apt -y update
-RUN apt -y upgrade
+RUN apt-get -y update
+RUN apt-get -y upgrade
+
+# Fix warnings
+RUN apt-get -y install apt-utils # Fix debconf: delaying package configuration, since apt-utils is not installed
+RUN apt-get -y install libcanberra-gtk-module libcanberra-gtk3-module # Fix "Gtk-Message: Failed to load module"
+RUN apt-get -y install dbus-x11 # Fix "dconf-WARNING **: failed to commit changes to dconf: ..."
 
 # Get dependencies
-RUN apt -y install wget
-RUN apt -y install htop
-RUN apt -y install openjdk-18-jre
-RUN apt -y install libcanberra-gtk-module libcanberra-gtk3-module # Fix "Gtk-Message: Failed to load module"
-RUN apt -y install dbus-x11 # Fix "dconf-WARNING **: failed to commit changes to dconf: ..."
+RUN apt-get -y install wget
+RUN apt-get -y install openjdk-18-jre
 
 # Create new user yed
 RUN groupadd -g "${YED_GID}" yed && useradd --create-home --no-log-init -u "${YED_UID}" -g "${YED_GID}" yed
