@@ -3,7 +3,7 @@ FROM ubuntu:latest
 
 # Download link and installer script
 ARG YED_DL=https://www.yworks.com/resources/yed/demo/
-ARG YED_SH=yEd-3.23.1_with-JRE15_64-bit_setup.sh
+ARG YED_SH=yEd-3.23.2_with-JRE20_64-bit_setup.sh
 
 # Arguments
 ARG YED_UID # see build function
