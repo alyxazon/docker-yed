@@ -4,7 +4,8 @@ Install and run yEd in a container. This container (Dockerfile) can run with Doc
 
 ![Banner](res/banner.svg)
 
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/alexazon/docker-yed/docker-build.yml)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/alexazon/docker-yed/docker-build.yml?label=build%20(docker))
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/alexazon/docker-yed/podman-build.yml?label=build%20(podman))
 ![GitHub](https://img.shields.io/github/license/alexazon/docker-yed)
 ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/alexazon/docker-yed)
 
