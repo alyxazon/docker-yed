@@ -29,15 +29,9 @@ Install and run yEd in a container. This container (Dockerfile) can run with Doc
 
 ## Build and Start
 
-By default, the container will use Docker.
+By default, the container will use Docker. Just run `make`, this will build and start the container (using Docker). If you want to use Podman, just run `make podman`.
 
-Just run `make`, this will build and start the container (using Docker).
-
-If you want to use Podman, just run `make podman`.
-
-After building the yEd installer should pop up. Accept the agreement and use the default values and paths.
-
-Use `yed` inside the container to install and/or start yEd, if yEd didn't start automatically.
+After building the yEd installer should pop up. Accept the agreement and use the default values and paths. Use `yed` inside the container to install and/or start yEd, if yEd didn't start automatically.
 
 Press `CTRL+D` or use `exit` to shut down the container.
 
