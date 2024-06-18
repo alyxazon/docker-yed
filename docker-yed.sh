@@ -3,6 +3,16 @@
 # Generic settings
 IMAGE_NAME="docker-yed"
 
+# Default Docker settings
+YED_CONTAINER_ENGINE="docker"
+YED_BASHRC="/home/yed/.bashrc"
+YED_USER="yed"
+
+# Optional Podman settings
+YED_PODMAN_CONTAINER_ENGINE="podman"
+YED_PODMAN_BASHRC="/root/.bashrc"
+YED_PODMAN_USER="root"
+
 # Display
 XSOCK=/tmp/.X11-unix
 XAUTH=$(mktemp /tmp/.docker.xauth-XXXXX)
@@ -20,16 +30,19 @@ TIME_DOCKER=$TIME_LOCATION
 function build()
 {
   mkdir -p $WS
-  docker build \
+  $YED_CONTAINER_ENGINE build \
     -t $IMAGE_NAME . \
     --build-arg YED_UID=$(id -u) \
-    --build-arg YED_GID=$(id -g)
+    --build-arg YED_GID=$(id -g) \
+    --build-arg YED_CONTAINER_ENGINE=$YED_CONTAINER_ENGINE \
+    --build-arg YED_BASHRC=$YED_BASHRC \
+    --build-arg YED_USER=$YED_USER
 }
 
 # Function run
 function run()
 {
-  docker run \
+  $YED_CONTAINER_ENGINE run \
     -t \
     -i \
     --rm \
@@ -49,13 +62,18 @@ ARG_RUN=0
 ARG_WS="/dev/null"
 
 # Parse arguments
-while getopts "brw:" opt; do
+while getopts "brpw:" opt; do
   case $opt in
     b)
       ARG_BUILD=1
       ;;
     r)
       ARG_RUN=1
+      ;;
+    p)
+      YED_CONTAINER_ENGINE=$YED_PODMAN_CONTAINER_ENGINE
+      YED_BASHRC=$YED_PODMAN_BASHRC
+      YED_USER=$YED_PODMAN_USER
       ;;
     w)
       ARG_WS=$OPTARG

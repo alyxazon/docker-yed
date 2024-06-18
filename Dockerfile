@@ -1,4 +1,4 @@
-# Ubuntu
+# The ubuntu:latest tag points to the latest LTS, since that is the version recommended for general use
 FROM ubuntu:latest
 
 # Download link and installer script
@@ -6,11 +6,13 @@ ARG YED_DL=https://www.yworks.com/resources/yed/demo/
 ARG YED_SH=yEd-3.23.2_with-JRE20_64-bit_setup.sh
 
 # Arguments
-ARG YED_UID # see build function
-ARG YED_GID # see build function
+ARG YED_UID
+ARG YED_GID
+ARG YED_CONTAINER_ENGINE
+ARG YED_BASHRC
+ARG YED_USER
 
 # Home settings for user yed
-ARG BASHRC=/home/yed/.bashrc
 ARG YED_HOME=/home/yed
 
 # Update OS
@@ -24,21 +26,25 @@ RUN apt-get -y install dbus-x11 # Fix "dconf-WARNING **: failed to commit change
 
 # Get dependencies
 RUN apt-get -y install wget
-RUN apt-get -y install openjdk-18-jre
+RUN apt-get -y install openjdk-17-jre
 
 # Create new user yed
-RUN groupadd -g "${YED_GID}" yed && useradd --create-home --no-log-init -u "${YED_UID}" -g "${YED_GID}" yed
-USER yed
-WORKDIR $YED_HOME
+RUN if [ "$YED_CONTAINER_ENGINE" = "docker" ]; then \
+        groupadd -g "${YED_GID}" yed && useradd --create-home --no-log-init -u "${YED_UID}" -g "${YED_GID}" yed; \
+    else \
+        mkdir ${YED_HOME}; \
+    fi
 
 # Get yEd
+USER ${YED_USER}
+WORKDIR $YED_HOME
 RUN wget $YED_DL$YED_SH -P $YED_HOME
 RUN chmod 777 $YED_HOME/$YED_SH
 
 # Modify .bashrc
-RUN echo "" >> $BASHRC
-RUN echo "alias yed-install='exec $YED_HOME/$YED_SH &'" >> $BASHRC
-RUN echo "alias yed-run='yEd &'" >> $BASHRC
-RUN echo "export PATH=$PATH:$YED_HOME/yEd" >> $BASHRC
-RUN echo "function yed() { if ! [ -x yEd ]; then yed-install else yed-run fi }" >> $BASHRC
-RUN echo "yed" >> $BASHRC
+RUN echo "" >> $YED_BASHRC
+RUN echo "alias yed-install='exec $YED_HOME/$YED_SH &'" >> $YED_BASHRC
+RUN echo "alias yed-run='yEd &'" >> $YED_BASHRC
+RUN echo "export PATH=$PATH:$YED_HOME/yEd" >> $YED_BASHRC
+RUN echo "function yed() { if ! [ -x yEd ]; then yed-install else yed-run fi }" >> $YED_BASHRC
+RUN echo "yed" >> $YED_BASHRC

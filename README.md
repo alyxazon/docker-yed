@@ -1,6 +1,6 @@
 # docker-yed
 
-Install and run yEd in a Docker container.
+Install and run yEd in a container. This container (Dockerfile) can run with Docker or Podman.
 
 ![Banner](res/banner.svg)
 
@@ -18,18 +18,23 @@ Install and run yEd in a Docker container.
 - [FAQ and Common Problems](#faq-and-common-problems)
   - [What is yEd?](#what-is-yed)
   - [Installation Loop](#installation-loop)
-  - [Got Permission Denied](#got-permission-denied)
-  - [Remove Container](#remove-container)
-  - [Generic Docker Issues](#generic-docker-issues)
-    - [Other X11 and Wayland Problems](#other-x11-and-wayland-problems)
+  - [Docker](#docker)
+    - [Got Permission Denied](#got-permission-denied)
+    - [Remove Container](#remove-container)
+    - [Generic Docker Issues](#generic-docker-issues)
+      - [Other X11 and Wayland Problems](#other-x11-and-wayland-problems)
 
 # Quick Start
 
 ## Build and Start
 
-Just run `make`, this will build and start the container.
-After building the yEd installer should pop up.
-Accept the agreement and use the default values and paths.
+By default, the container will use Docker.
+
+Just run `make`, this will build and start the container (using Docker).
+
+If you want to use Podman, just run `make podman`.
+
+After building the yEd installer should pop up. Accept the agreement and use the default values and paths.
 
 Use `yed` inside the container to install and/or start yEd, if yEd didn't start automatically.
 
@@ -46,18 +51,34 @@ Example: `make WORKSPACE=/opt`
 
 ## Bash Alias
 
-Put this in your .bashrc (or elsewhere) to start the container and yEd:
+Add one of these examples to your .bashrc (or elsewhere) to start the container and yEd easily.
 
-Default workspace:
+### Default Workspace
+
+#### Docker
 
 ```bash
 alias yed='make -C ${GIT-PATH}/docker-yed'
 ```
 
-Custom workspace:
+#### Podman
+
+```bash
+alias yed='make podman -C ${GIT-PATH}/docker-yed'
+```
+
+### Custom Workspace
+
+#### Docker
 
 ```bash
 alias yed='make -C ${GIT-PATH}/docker-yed WORKSPACE=${OWN_WORKSPACE_PATH}'
+```
+
+#### Podman
+
+```bash
+alias yed='make podman -C ${GIT-PATH}/docker-yed WORKSPACE=${OWN_WORKSPACE_PATH}'
 ```
 
 ## Installer Options
@@ -94,7 +115,9 @@ You can export diagrams as GIF, JPEG, PNG, EMF, BMP, PDF, EPS, and SVG.
 
 You need to install yEd every time you run the container because the installer script doesn't provide a command line interface.
 
-## Got Permission Denied
+## Docker
+
+### Got Permission Denied
 
 Error:
 
@@ -111,7 +134,7 @@ sudo usermod -aG docker ${USER}
 su -s ${USER}
 ```
 
-## Docker is not running
+### Docker is not running
 
 Error:
 
@@ -127,7 +150,7 @@ sudo systemctl start docker
 sudo systemctl enable docker    # optional, docker will now start automatically
 ```
 
-## Remove Container
+### Remove Container
 
 List docker-yed container(s):
 
@@ -148,8 +171,8 @@ Stop container(s):
 docker container stop ${ID}
 ```
 
-## Generic Docker Issues
+### Generic Docker Issues
 
-### Other X11 and Wayland Problems
+#### Other X11 and Wayland Problems
 
 Please check this link: https://github.com/mviereck/x11docker
