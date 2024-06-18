@@ -1,21 +1,19 @@
-name: Build
+name: Docker Build
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "proposed_master" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "master", "proposed_master" ]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: docker-practice/actions-setup-docker@master
       timeout-minutes: 12
-    
-    - uses: actions/checkout@v3
       
+    - uses: actions/checkout@v3
+
     - name: Run test command
-      run: make test
+      run: make docker-test

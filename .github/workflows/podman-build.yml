@@ -1,0 +1,21 @@
+name: Podman Build
+
+on:
+  push:
+    branches: [ "master", "proposed_master" ]
+  pull_request:
+    branches: [ "master", "proposed_master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Podman
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y podman
+
+    - name: Run test command
+      run: make podman-test
