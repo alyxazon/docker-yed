@@ -21,7 +21,7 @@ Install and run yEd in a container. This container (Dockerfile) can run with Doc
 - [FAQ and Common Problems](#faq-and-common-problems)
   * [What is yEd?](#what-is-yed-)
   * [Installation Loop](#installation-loop)
-  * [Docker](#docker-2)
+  * [Docker](#docker)
     + [Got Permission Denied](#got-permission-denied)
     + [Docker is not running](#docker-is-not-running)
     + [Other X11 and Wayland Problems](#other-x11-and-wayland-problems)
