@@ -12,18 +12,23 @@ Install and run yEd in a container. This container (Dockerfile) can run with Doc
 # Table of Contents
 
 - [Quick Start](#quick-start)
-  - [Build and Start](#build-and-start)
-  - [Workspace](#workspace)
-  - [Bash Alias](#bash-alias)
-  - [Installer Options](#using-yed)
+  * [Build and Start](#build-and-start)
+  * [Workspace](#workspace)
+  * [Bash Alias](#bash-alias)
+    + [Default Workspace](#default-workspace)
+    + [Custom Workspace](#custom-workspace)
+  * [Installer Options](#installer-options)
 - [FAQ and Common Problems](#faq-and-common-problems)
-  - [What is yEd?](#what-is-yed)
-  - [Installation Loop](#installation-loop)
-  - [Docker](#docker)
-    - [Got Permission Denied](#got-permission-denied)
-    - [Remove Container](#remove-container)
-    - [Generic Docker Issues](#generic-docker-issues)
-      - [Other X11 and Wayland Problems](#other-x11-and-wayland-problems)
+  * [What is yEd?](#what-is-yed-)
+  * [Installation Loop](#installation-loop)
+  * [Docker](#docker-2)
+    + [Got Permission Denied](#got-permission-denied)
+    + [Docker is not running](#docker-is-not-running)
+    + [Other X11 and Wayland Problems](#other-x11-and-wayland-problems)
+  * [Container Management](#container-management)
+    + [List all docker-yed containers](#list-all-docker-yed-containers)
+    + [Remove container](#remove-container)
+    + [Stop container](#stop-container)
 
 # Quick Start
 
@@ -145,29 +150,52 @@ sudo systemctl start docker
 sudo systemctl enable docker    # optional, docker will now start automatically
 ```
 
-### Remove Container
+### Other X11 and Wayland Problems
 
-List docker-yed container(s):
+Please check this link: https://github.com/mviereck/x11docker
+
+## Container Management
+
+### List all docker-yed containers
+
+#### Docker
 
 ```bash
 docker images | grep docker-yed    # list containers, we only care about docker-yed container(s)
 ```
 
-Remove container(s):
+#### Podman
+
+```bash
+podman images | grep docker-yed    # list containers, we only care about docker-yed container(s)
+```
+
+### Remove container
+
+#### Docker
 
 ```bash
 docker image rm docker-yed    # by name
 docker image rm ${ID}         # by ID, alternative option
 ```
 
-Stop container(s):
+#### Podman
+
+```bash
+podman image rm docker-yed    # by name
+podman image rm ${ID}         # by ID, alternative option
+```
+
+### Stop container
+
+#### Docker
 
 ```bash
 docker container stop ${ID}
 ```
 
-### Generic Docker Issues
+#### Podman
 
-#### Other X11 and Wayland Problems
-
-Please check this link: https://github.com/mviereck/x11docker
+```bash
+podman container stop ${ID}
+```

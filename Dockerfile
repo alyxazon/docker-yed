@@ -3,7 +3,7 @@ FROM ubuntu:latest
 
 # Download link and installer script
 ARG YED_DL=https://www.yworks.com/resources/yed/demo/
-ARG YED_SH=yEd-3.23.2_with-JRE20_64-bit_setup.sh
+ARG YED_SH=yEd-3.24_with-JRE22_64-bit_setup.sh
 
 # Arguments
 ARG YED_UID
@@ -26,7 +26,6 @@ RUN apt-get -y install dbus-x11 # Fix "dconf-WARNING **: failed to commit change
 
 # Get dependencies
 RUN apt-get -y install wget
-RUN apt-get -y install openjdk-17-jre
 
 # Create new user yed
 RUN if [ "$YED_CONTAINER_ENGINE" = "docker" ]; then \
