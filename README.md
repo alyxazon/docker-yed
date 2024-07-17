@@ -19,7 +19,7 @@ Install and run yEd in a container. This container (Dockerfile) can run with Doc
     + [Custom Workspace](#custom-workspace)
   * [Installer Options](#installer-options)
 - [FAQ and Common Problems](#faq-and-common-problems)
-  * [What is yEd?](#what-is-yed-)
+  * [What is yEd?](#what-is-yed)
   * [Installation Loop](#installation-loop)
   * [Docker](#docker)
     + [Got Permission Denied](#got-permission-denied)
