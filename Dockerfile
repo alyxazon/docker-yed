@@ -1,5 +1,5 @@
-# The ubuntu:latest tag points to the latest LTS, since that is the version recommended for general use
-FROM ubuntu:latest
+# Debian
+FROM debian:bookworm
 
 # Download link and installer script
 ARG YED_DL=https://www.yworks.com/resources/yed/demo/
