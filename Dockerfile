@@ -29,7 +29,11 @@ RUN apt-get -y install wget
 
 # Create new user yed
 RUN if [ "$YED_CONTAINER_ENGINE" = "docker" ]; then \
-        groupadd -g "${YED_GID}" yed && useradd --create-home --no-log-init -u "${YED_UID}" -g "${YED_GID}" yed; \
+        if [ ! $(getent group ${YED_GID}) ]; then \
+            groupadd -g "${YED_GID}" yed && useradd --create-home --no-log-init -u "${YED_UID}" -g "${YED_GID}" yed; \
+        else \
+            useradd --create-home --no-log-init yed; \
+        fi \
     else \
         mkdir ${YED_HOME}; \
     fi
