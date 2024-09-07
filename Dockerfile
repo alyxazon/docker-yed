@@ -10,10 +10,11 @@ ARG YED_UID
 ARG YED_GID
 ARG YED_CONTAINER_ENGINE
 ARG YED_BASHRC
-ARG YED_USER
 
 # Home settings for user yed
-ARG YED_HOME=/home/yed
+ENV YED_USER=yed
+ENV YED_HOME=/home/yed
+ENV YED_BASHRC=/home/yed/.bashrc
 
 # Update OS
 RUN apt-get -y update
@@ -28,18 +29,11 @@ RUN apt-get -y install dbus-x11 # Fix "dconf-WARNING **: failed to commit change
 RUN apt-get -y install wget
 
 # Create new user yed
-RUN if [ "$YED_CONTAINER_ENGINE" = "docker" ]; then \
-        if [ ! $(getent group ${YED_GID}) ]; then \
-            groupadd -g "${YED_GID}" yed && useradd --create-home --no-log-init -u "${YED_UID}" -g "${YED_GID}" yed; \
-        else \
-            useradd --create-home --no-log-init yed; \
-        fi \
-    else \
-        mkdir ${YED_HOME}; \
-    fi
+RUN groupadd -g "${YED_GID}" yed
+RUN useradd --create-home -u "${YED_UID}" -g "${YED_GID}" yed
 
 # Get yEd
-USER ${YED_USER}
+USER $YED_USER
 WORKDIR $YED_HOME
 RUN wget $YED_DL$YED_SH -P $YED_HOME
 RUN chmod 777 $YED_HOME/$YED_SH
