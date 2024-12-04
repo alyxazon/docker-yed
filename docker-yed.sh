@@ -66,6 +66,7 @@ while getopts "brpw:" opt; do
       ;;
     p)
       YED_USER=$YED_PODMAN_USER
+      YED_CONTAINER_ENGINE=$YED_PODMAN_CONTAINER_ENGINE
       ;;
     w)
       ARG_WS=$OPTARG
