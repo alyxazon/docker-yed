@@ -43,7 +43,7 @@ function run()
     -v $TIME_LOCATION:$TIME_DOCKER:ro \
     -v $XSOCK:$XSOCK \
     -v $XAUTH:$XAUTH \
-    -v $1:$WS_DOCKER \
+    -v $1:$WS_DOCKER:rw \
     -e DISPLAY=unix$DISPLAY \
     -e XAUTHORITY=$XAUTH \
     "$IMAGE_NAME"
