@@ -19,16 +19,19 @@ Install and run yEd in a container. This container (Dockerfile) can run with Doc
     + [Custom Workspace](#custom-workspace)
   * [Installer Options](#installer-options)
 - [FAQ and Common Problems](#faq-and-common-problems)
-  * [What is yEd?](#what-is-yed)
+  * [What Is yEd?](#what-is-yed)
   * [Installation Loop](#installation-loop)
   * [Docker](#docker)
     + [Got Permission Denied](#got-permission-denied)
-    + [Docker is not running](#docker-is-not-running)
+    + [Docker is Not Running](#docker-is-not-running)
     + [Other X11 and Wayland Problems](#other-x11-and-wayland-problems)
+  * [Podman](podman)
+    + [Authorization Required](#authorization-required)
+    + [Access Files](#access-files)
   * [Container Management](#container-management)
-    + [List all docker-yed containers](#list-all-docker-yed-containers)
-    + [Remove container](#remove-container)
-    + [Stop container](#stop-container)
+    + [List All docker-yed Containers](#list-all-docker-yed-containers)
+    + [Remove Container](#remove-container)
+    + [Stop Container](#stop-container)
 
 # Quick Start
 
@@ -154,9 +157,43 @@ sudo systemctl enable docker    # optional, docker will now start automatically
 
 Please check this link: https://github.com/mviereck/x11docker
 
+## Podman
+
+### Authorization Required
+
+Error:
+
+```
+Starting Installer ...
+Authorization required, but no authorization protocol specified
+
+Could not display the GUI. This application needs access to an X Server.
+```
+
+Solution:
+
+```bash
+xhost +local:root
+xhost -local:root # optional, remove x server access after container usage
+```
+
+### Access Files
+
+Error:
+
+```
+File can't be saved (inside yEd)
+```
+
+Solution:
+
+```bash
+chmod o+w workspace -R
+```
+
 ## Container Management
 
-### List all docker-yed containers
+### List All docker-yed Containers
 
 #### Docker
 
@@ -170,7 +207,7 @@ docker images | grep docker-yed    # list containers, we only care about docker-
 podman images | grep docker-yed    # list containers, we only care about docker-yed container(s)
 ```
 
-### Remove container
+### Remove Container
 
 #### Docker
 
@@ -186,7 +223,7 @@ podman image rm docker-yed    # by name
 podman image rm ${ID}         # by ID, alternative option
 ```
 
-### Stop container
+### Stop Container
 
 #### Docker
 
