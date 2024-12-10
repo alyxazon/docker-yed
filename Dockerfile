@@ -9,7 +9,6 @@ ARG YED_SH=yEd-3.24_with-JRE22_64-bit_setup.sh
 ARG YED_UID
 ARG YED_GID
 ARG YED_CONTAINER_ENGINE
-ARG YED_BASHRC
 
 # Home settings for user yed
 ENV YED_USER=yed
