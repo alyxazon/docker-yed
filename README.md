@@ -185,6 +185,8 @@ Error:
 File can't be saved (inside yEd)
 ```
 
+This is what happens when you use Podman and Docker in alternation.
+
 Solution:
 
 ```bash
