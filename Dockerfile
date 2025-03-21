@@ -3,7 +3,7 @@ FROM debian:bookworm
 
 # Download link and installer script
 ARG YED_DL=https://www.yworks.com/resources/yed/demo/
-ARG YED_SH=yEd-3.24_with-JRE22_64-bit_setup.sh
+ARG YED_SH=yEd-3.25.1_with-JRE23_64-bit_setup.sh
 
 # Arguments
 ARG YED_UID
